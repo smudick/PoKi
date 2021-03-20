@@ -130,6 +130,11 @@ from poem p
 	where pe.Id is null
 	group by pe.Id
 
+--alt solution
+select count (*) as TotalPoemsWithNoEmotions
+	from poem p 
+	where p.Id not in (select poemid from PoemEmotion)
+
 --18. Which emotion is associated with the least number of poems?
 
 select e.Name, count(*) as TotalPoems
