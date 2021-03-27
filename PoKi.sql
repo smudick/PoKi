@@ -164,7 +164,7 @@ from poem p
 
 --20. Which gender has the least number of poems with an emotion of fear?
 
-select g.Name, count(*) as TotalFearfulPoems 
+select g.Name, count(e.name) as TotalFearfulPoems 
 from poem p
 	join PoemEmotion pe
 	on pe.PoemId = p.Id
@@ -173,7 +173,7 @@ from poem p
 	join Author a
 	on a.Id = p.AuthorId
 	join Gender g
-	on g.id = a.GradeId
+	on g.id = a.GenderId
 	where e.Name = 'Fear'
 	group by g.Name
 	order by TotalFearfulPoems
